@@ -68,7 +68,7 @@ class Book:
 		while words_left > 0:
 			# sample number of words read from normal distribution
 			# read = np.clip(np.random.normal(loc=AVG_READING_RATE,scale=AVG_READING_RATE * 2), MIN_READING_RATE, MAX_READING_RATE)
-			read = np.clip(np.random.normal(loc=self.rate, scale=self.rate * 0.8), MIN_READING_RATE, MAX_READING_RATE)
+			read = np.clip(np.random.normal(loc=self.rate, scale=self.rate * 0.4), MIN_READING_RATE, MAX_READING_RATE)
 
 			# if the book is finished, return
 			if words_left - read <= 0:
