@@ -32,11 +32,11 @@ d3.csv("https://raw.githubusercontent.com/mnuryga/intvishw6/master/book_data.csv
   // Add X axis
   const x = d3.scaleLinear()
     // .domain(d3.extent(data, function(d) { return d.Day; }))
-    .domain([0,28])
+    .domain([0,120])
     .range([ 0, width ]);
   svg.append("g")
     .attr("transform", `translate(0, ${height*0.8})`)
-    .call(d3.axisBottom(x).tickSize(-height*.7).tickValues([0, 10, 20]))
+    .call(d3.axisBottom(x).tickSize(-height*.7).tickValues([0, 50, 100]))
     .select(".domain").remove()
   // Customization
   svg.selectAll(".tick line").attr("stroke", "#b8b8b8")

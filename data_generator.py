@@ -14,7 +14,7 @@ import pandas as pd
 WORD_LIMIT = 1_000_000
 MAX_READING_RATE = 400_000 # words per day
 AVG_READING_RATE = 40_000 # words per day
-MIN_READING_RATE = 0 # words per day
+MIN_READING_RATE = 10 # words per day
 
 @dataclass
 class Book:
