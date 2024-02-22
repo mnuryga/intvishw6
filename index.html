@@ -54,7 +54,7 @@ d3.csv("https://raw.githubusercontent.com/mnuryga/intvishw6/master/book_data.csv
     .range([ height, 0 ]);
   svg.append("g")
     // .attr("transform", `translate(0, ${height-190})`)
-    .call(d3.axisLeft(y).tickSize(-height).tickValues([0, 25000, 25000, 50000, 50000]))
+    .call(d3.axisLeft(y).tickSize(-height).tickValues([0, -25000, 25000, -50000, 50000]))
     .select(".domain").remove()
   svg.append("text")
       .attr("text-anchor", "end")
