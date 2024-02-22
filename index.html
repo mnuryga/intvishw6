@@ -27,18 +27,19 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered_wide.csv", function(data) {
+// d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered_wide.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/mnuryga/intvishw6/master/book_data.csv", function(data) {
 
   // List of groups = header of the csv files
   var keys = data.columns.slice(1)
 
   // Add X axis
   var x = d3.scaleLinear()
-    .domain(d3.extent(data, function(d) { return d.year; }))
+    .domain(d3.extent(data, function(d) { return d.day; }))
     .range([ 0, width ]);
   svg.append("g")
     .attr("transform", "translate(0," + height*0.8 + ")")
-    .call(d3.axisBottom(x).tickSize(-height*.7).tickValues([1900, 1925, 1975, 2000]))
+    .call(d3.axisBottom(x).tickSize(-height*.7).tickValues([0, 10, 20, 30]))
     .select(".domain").remove()
   // Customization
   svg.selectAll(".tick line").attr("stroke", "#b8b8b8")
