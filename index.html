@@ -21,7 +21,7 @@ const svg = d3.select("#my_dataviz")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
-          `translate(${margin.left}, ${margin.top})`);
+          `translate(${margin.left+80}, ${margin.top})`);
 
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/mnuryga/intvishw6/master/book_data.csv").then(function(data) {
@@ -44,14 +44,23 @@ d3.csv("https://raw.githubusercontent.com/mnuryga/intvishw6/master/book_data.csv
   // Add X axis label:
   svg.append("text")
       .attr("text-anchor", "end")
-      .attr("x", width)
-      .attr("y", height-30 )
+      .attr("x", width-230)
+      .attr("y", height-30)
       .text("Day");
 
   // Add Y axis
   const y = d3.scaleLinear()
-    .domain([-110000, 110000])
+    .domain([-90000, 90000])
     .range([ height, 0 ]);
+  svg.append("g")
+    // .attr("transform", `translate(0, ${height-190})`)
+    .call(d3.axisLeft(y).tickSize(-height).tickValues([0, 25000, 25000, 50000, 50000]))
+    .select(".domain").remove()
+  svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", -13)
+      .attr("y", height-185)
+      .text("Words Read");
 
   // color palette
   const color = d3.scaleOrdinal()
