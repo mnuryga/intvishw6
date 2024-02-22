@@ -72,7 +72,7 @@ class Book:
 
 			# if the book is finished, return
 			if words_left - read <= 0:
-				words_read.append(0)
+				words_read.append(words_left)
 				self.words_left = words_read
 				return
 			else:
@@ -143,7 +143,7 @@ def write_matrix_to_file(mat, books, fname):
 
 def main():
 	# parse books from file
-	books = parse_books('books.csv')
+	books = parse_books('books_him.csv')
 
 	# generate random reading data from each book
 	for b in books:
@@ -153,7 +153,7 @@ def main():
 	mat = generate_matrix(books)
 
 	# parse and write to file for input into D3
-	write_matrix_to_file(mat, books, 'book_data.csv')
+	write_matrix_to_file(mat, books, 'book_data_x.csv')
 
 if __name__ == '__main__':
 	main()
