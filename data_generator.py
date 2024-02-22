@@ -24,6 +24,8 @@ class Book:
 
 	title: str
 	start_day: int
+	words: int
+	rate: int
 
 	def __repr__(self):
 		'''
@@ -58,13 +60,15 @@ class Book:
 		'''
 
 		# each book will have 5k to 1M words (increments of 1k)
-		words_left = 1000 * np.random.randint(5, high=WORD_LIMIT // 1_000)
+		# words_left = 1000 * np.random.randint(5, high=WORD_LIMIT // 1_000)
+		words_left = self.words
 		words_read = []
 
 		# read a random amt of words each day until none left
 		while words_left > 0:
 			# sample number of words read from normal distribution
-			read = np.clip(np.random.normal(loc=AVG_READING_RATE,scale=AVG_READING_RATE * 2), MIN_READING_RATE, MAX_READING_RATE)
+			# read = np.clip(np.random.normal(loc=AVG_READING_RATE,scale=AVG_READING_RATE * 2), MIN_READING_RATE, MAX_READING_RATE)
+			read = np.clip(np.random.normal(loc=self.rate, scale=self.rate * 0.8), MIN_READING_RATE, MAX_READING_RATE)
 
 			# if the book is finished, return
 			if words_left - read <= 0:
@@ -94,7 +98,7 @@ def parse_books(fname):
 		csv_file = csv.reader(f)
 
 		# create a new Book from each line in the csv file
-		output = [Book(line[0], int(line[1])) for line in csv_file]
+		output = [Book(line[0], int(line[1]), int(line[2]), int(line[3])) for line in csv_file]
 
 	return output
 
