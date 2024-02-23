@@ -32,11 +32,11 @@ d3.csv("https://raw.githubusercontent.com/mnuryga/intvishw6/master/book_data.csv
   // Add X axis
   const x = d3.scaleLinear()
     // .domain(d3.extent(data, function(d) { return d.Day; }))
-    .domain([0,120])
+    .domain([0,100])
     .range([ 0, width ]);
   svg.append("g")
     .attr("transform", `translate(0, ${height*0.8})`)
-    .call(d3.axisBottom(x).tickSize(-height*.7).tickValues([0, 50, 100]))
+    .call(d3.axisBottom(x).tickSize(-height*.7).tickValues([0, 40, 80]))
     .select(".domain").remove()
   // Customization
   svg.selectAll(".tick line").attr("stroke", "#b8b8b8")
@@ -50,11 +50,11 @@ d3.csv("https://raw.githubusercontent.com/mnuryga/intvishw6/master/book_data.csv
 
   // Add Y axis
   const y = d3.scaleLinear()
-    .domain([-90000, 90000])
+    .domain([-400000, 400000])
     .range([ height, 0 ]);
   svg.append("g")
     // .attr("transform", `translate(0, ${height-190})`)
-    .call(d3.axisLeft(y).tickSize(-height).tickValues([0, -25000, 25000, -50000, 50000]))
+    .call(d3.axisLeft(y).tickSize(-height).tickValues([0, -100000, 100000, -200000, 200000]))
     .select(".domain").remove()
   svg.append("text")
       .attr("text-anchor", "end")
@@ -110,7 +110,7 @@ d3.csv("https://raw.githubusercontent.com/mnuryga/intvishw6/master/book_data.csv
     .data(stackedData)
     .join("path")
       .attr("class", "myArea")
-      .style("fill", function(d) { return color(d.key); })
+      .style("fill", function(d) { console.log(d.key); console.log(color(d.key)); return color(d.key); })
       .attr("d", area)
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
